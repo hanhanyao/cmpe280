@@ -10,7 +10,6 @@ import {
 import Home from './components/home/Home.jsx';
 import About from './components/about/About.jsx';
 import Contact from './components/contact/Contact.jsx';
-import Login from './components/login/Login.jsx';
 
 function token() {
   return localStorage.getItem('token')
