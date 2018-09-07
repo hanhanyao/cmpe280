@@ -20,7 +20,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     {...rest}
     render={
       props => {
-        if (token()) {
+        if (token) {
           return <Component {...props} />
         } else {
           return <Redirect
@@ -34,6 +34,35 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     }
   />
 );
+
+
+class Login extends React.PureComponent {
+  state = {
+    redirectToReferrer: false
+  };
+
+  login = () => {
+    fakeAuth.authenticate(() => {
+      this.setState({ redirectToReferrer: true });
+    });
+  };
+
+  render() {
+    const { from } = this.props.location.state || { from: { pathname: "/" } };
+    const { redirectToReferrer } = this.state;
+
+    if (redirectToReferrer) {
+      return <Redirect to={from} />;
+    }
+
+    return (
+      <div>
+        <p>You must log in to view the page at {from.pathname}</p>
+        <button onClick={this.login}>Log in</button>
+      </div>
+    );
+  }
+}
 
 render((
   <Router>
