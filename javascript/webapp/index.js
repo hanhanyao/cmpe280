@@ -11,16 +11,24 @@ import Home from './components/home/Home.jsx';
 import About from './components/about/About.jsx';
 import Contact from './components/contact/Contact.jsx';
 
-function token() {
-  return localStorage.getItem('token')
-}
+const fakeAuth = {
+  isAuthenticated: false,
+  authenticate(cb) {
+    this.isAuthenticated = true;
+    setTimeout(cb, 100); // fake async
+  },
+  signout(cb) {
+    this.isAuthenticated = false;
+    setTimeout(cb, 100);
+  }
+};
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={
       props => {
-        if (token) {
+        if (fakeAuth.isAuthenticated) {
           return <Component {...props} />
         } else {
           return <Redirect
