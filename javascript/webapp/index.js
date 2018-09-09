@@ -10,6 +10,7 @@ import {
 import Home from './components/home/Home.jsx';
 import About from './components/about/About.jsx';
 import Contact from './components/contact/Contact.jsx';
+import Header from './components/header/Header.jsx';
 
 const fakeAuth = {
   isAuthenticated: false,
@@ -75,6 +76,7 @@ class Login extends React.PureComponent {
 render((
   <Router>
     <div>
+      <Header></Header>
       <ul>
         <li><Link to="/home">Home</Link></li>
         <li><Link to="/about">About</Link></li>
