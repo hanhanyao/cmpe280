@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  if !login
+    form(action="/login", method="post")
+      div(class="col-6 col-12-xsmall center")
+        input(name = "username" type = "text" required placeholder = "username")
+      div(class="col-6 col-12-xsmall center")
+        input(name = "password" type = "password" required placeholder = "password")
+      div(class="col-12 center")
+        ul(class="actions")
+          li
+            button(type="Submit" class="primary") Log in
+  if login
+    h3 Welcome #{username}
