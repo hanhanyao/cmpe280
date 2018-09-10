@@ -2,6 +2,8 @@ extends layout
 
 block content
   if !login
+    div(id="heading")
+			h1 Login
     form(action="/login", method="post")
       div(class="col-6 col-12-xsmall center")
         input(name = "username" type = "text" required placeholder = "username")
@@ -12,4 +14,5 @@ block content
           li
             button(type="Submit" class="primary") Log in
   if login
-    h3 Welcome #{username}
+    div(id="heading")
+      h1 Welcome #{username}
