@@ -1,4 +1,5 @@
 var express = require('express');
+// var path = require('path');
 var router = express.Router();
 var ctrlMain = require("../controllers/main");
 
@@ -41,6 +42,11 @@ router.get('/protected', ctrlMain.loggedIn, ctrlMain.get_protected);
  * GET search page.
  */
 router.get('/search', ctrlMain.get_search);
+
+
+// router.get('/test', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../../public', 'test.html'));
+// })
 
 
 module.exports = router;
