@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
   secret: 'webkeepers',
   resave: true,
-  saveUninitialized: true,
+  saveUninitialized: false,
   cookie: { maxAge: 60000 }
 }));
 
