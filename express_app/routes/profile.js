@@ -9,9 +9,10 @@ var token = undefined;
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    console.log(req.session);
+    console.debug(req.session);
     if (req.session.username && req.session.username === username && req.session.token && req.session.token === token) {
         res.render('profile', { username: username, token: token });
+        console.debug('logined');
     } else {
         res.render('login');
     }
@@ -30,7 +31,7 @@ router.post('/', function (req, res, next) {
         token = Math.random().toString(36);
         req.session.token = token;
         res.render('profile', { username: username, token: token });
-        console.log('logined');
+        console.debug('logined');
     } else {
         res.render('error', { message: "Wrong username or password!" });
         console.debug(username + ' login fail');
