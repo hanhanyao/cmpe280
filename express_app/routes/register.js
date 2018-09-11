@@ -5,7 +5,11 @@ var fs = require('fs');
 var users = require('../json_objects/users.json');
 
 router.get('/', function (req, res, next) {
-    res.render('register');
+    if (req.session.token) {
+        res.render('profile', {username: req.session.username, token: req.session.token, message: "You already registered!"});
+    } else {
+        res.render('register');
+    }
 });
 
 
@@ -17,10 +21,10 @@ router.post('/', function (req, res) {
     users[username] = password;
     var json = JSON.stringify(users, null, 4);
 
-    fs.writeFile(__dirname+'/../json_objects/users.json', json, 'utf8', function (error) {
+    fs.writeFile(__dirname + '/../json_objects/users.json', json, 'utf8', function (error) {
         if (error) {
             console.error(error);
-            res.render('error', {error: error});
+            res.render('error', { error: error });
         } else {
             console.debug(username + ' is added');
             res.redirect('/profile');

@@ -32,7 +32,7 @@ router.post('/', function (req, res, next) {
         res.render('profile', { username: username, token: token });
         console.log('logined');
     } else {
-        res.render('error', {message: "Wrong username or password!"});
+        res.render('error', { message: "Wrong username or password!" });
         console.debug(username + ' login fail');
     }
 });
