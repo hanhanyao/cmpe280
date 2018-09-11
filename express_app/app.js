@@ -30,15 +30,13 @@ app.use(session({
   cookie: { maxAge: 60000 }
 }));
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var loginRounter = require('./routes/login');
-var demo = require('./routes/demo');
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/login', loginRounter);
-app.use('/demo', demo);
+app.use('/', require('./routes/index'));
+app.use('/profile', require('./routes/profile'));
+app.use('/logout', require('./routes/logout'));
+
+// for demo
+app.use('/demo', require('./routes/demo'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
