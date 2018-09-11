@@ -2,6 +2,17 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/styles/assets/css/main.css')
-  body
+    link(rel='stylesheet', href='/styles/templated/assets/css/main.css')
+    link(rel='stylesheet', href='/styles/extra.css')
+  body(class="subpage")
+    header(id="header")
+      div(class="inner")
+        a(href="index.html" class="logo") TripWiser
+        nav(id="nav")
+          a(href="/") Home
+          a(href="/profile") Profile
+          a(href="/about") About
+        a(href="#navPanel" class="navPanelToggle")
+          span(class="fa fa-bars")
+
     block content

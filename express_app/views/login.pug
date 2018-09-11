@@ -1,18 +1,15 @@
 extends layout
 
 block content
-  if !login
-    div(id="heading")
-			h1 Login
-    form(action="/login", method="post")
-      div(class="col-6 col-12-xsmall center")
-        input(name = "username" type = "text" required placeholder = "username")
-      div(class="col-6 col-12-xsmall center")
-        input(name = "password" type = "password" required placeholder = "password")
-      div(class="col-12 center")
-        ul(class="actions")
-          li
-            button(type="Submit" class="primary") Log in
-  if login
-    div(id="heading")
-      h1 Welcome #{username}
+  section(id="main" class="wrapper")
+    div(class="inner")
+      header(class="align-center")
+        h2 Login
+      div(class="align-center")
+        form(action="/profile", method="post")
+          div(class="6u 12u$(xsmall) center")
+            input(name = "username" type = "text" required placeholder = "username")
+          div(class="6u 12u$(xsmall) center")
+            input(name = "password" type = "password" required placeholder = "password")
+          div(class="6u 12u$(xsmall) center")
+            button(type="Submit" class="button special fit") Log in
