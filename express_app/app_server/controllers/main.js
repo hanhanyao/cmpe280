@@ -153,5 +153,6 @@ module.exports.get_protected = function(req, res)
  */
 module.exports.get_search = function(req, res)
 {
-    res.sendFile(path.join(__dirname, '../../public', 'search.html'));
+    res.render('search');
+    // res.sendFile(path.join(__dirname, '../../public', 'search.html'));
 };
